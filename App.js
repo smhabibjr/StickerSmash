@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-web';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
   const [name , setName] = useState("Habib");
   const [person, changePerson] = useState({name: "Abir", age: 44})
+  const [user, changeUser] = useState(["Abir Hasan", 55, "Bangladesh"])
 
   const changeName = () => {
     setName("Muhammad Habib");
@@ -16,6 +16,7 @@ export default function App() {
     
         <Text> My name is {name}</Text>
         <Text> My friend name is {person.name}. He is {person.age} years old.</Text>
+      <Text>This is our third line.{user[0]}, He is {user[1]} years old. and He is from {user[2]}  </Text>
 
 
       <View style={styles.buttonContainer}>

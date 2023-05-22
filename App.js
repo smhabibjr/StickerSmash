@@ -11,14 +11,14 @@ export default function App() {
     changePerson({name:"Muhammad", age: 55})
     changeUser(["only habib", 22, "Germany"])
   }
-
   return (
     <View style={styles.container}>
     
       <Text> My name is <Text style={styles.textBold}>{name}</Text> </Text>
-      <Text> My friend name is <Text style={styles.textBold}>{person.name}</Text>. He is {person.age} years old.</Text>
-      <Text>This is our third line.{user[0]}, He is {user[1]} years old. and He is from <Text style={styles.textBold}>{user[2]}</Text>  </Text>
 
+      <Text> My friend name is <Text style={styles.textBold}>{person.name}</Text>. He is {person.age} years old.</Text>
+
+      <Text>This is our third line.{user[0]}, He is {user[1]} years old. and He is from <Text style={styles.textBold}>{user[2]}</Text>  </Text>
 
       <View style={styles.buttonContainer}>
         <Button title="Update State" onPress={changeName} />

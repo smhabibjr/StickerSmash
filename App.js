@@ -2,33 +2,30 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
-  const [name , setName] = useState("Habib");
-  const [person, changePerson] = useState({name: "Abir", age: 44})
-  const [user, changeUser] = useState(["Abir Hasan", 55, "Bangladesh"])
-
-  const changeName = () => {
-    setName("Muhammad Habib");
-    changePerson({name:"Muhammad", age: 55})
-    changeUser(["only habib", 22, "Germany"])
-  }
-
-  const onchangeTrigger = (inputedValue)=> {
-    setName(inputedValue);
+  const [name , changeDefaultValue ]  = useState("");
+  const [age, changeAge] = useState("")
+  const changeNameF = (value) => {
+    changeDefaultValue(value)
+  } 
+  const changeAgeF = (value) => {
+    changeAge(value)
   }
 
   return (
     <View style={styles.container}>
-    
-    <View>
-      <TextInput 
-      style={styles.textInputField} 
-      placeholder='Type your name'
-          onChangeText={(value) => onchangeTrigger(value)}
-      />
-    </View>
 
-    <Text style={styles.marginButtom}> My name is <Text style={styles.textBold}>{name}</Text> </Text>
-      
+      <TextInput 
+      style={styles.inputTextField}
+        onChangeText={(val) => changeNameF(val)}
+        placeholder='e.g: Habib'
+     />
+      <TextInput
+        style={styles.inputTextField}
+        onChangeText={(val) => changeAgeF(val)}
+        placeholder='e.g: 45'
+        keyboardType='numeric'
+      />
+      <Text style={styles.textBold}>Your name is {name}, age {age}</Text>
     </View>
   );
 }
@@ -40,14 +37,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  marginButtom : {
-    marginTop:20
-  },
   textBold: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: 20
   },
-  textInputField: {
+  inputTextField: {
     borderWidth: 1,
-    padding: 10
+    borderColor: "black",
+    padding: 5,
+    margin: 5
   }
 });

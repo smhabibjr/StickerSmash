@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
   const [name , setName] = useState("Habib");
@@ -12,17 +12,22 @@ export default function App() {
     changeUser(["only habib", 22, "Germany"])
   }
 
+  const onchangeTrigger = (inputedValue)=> {
+    setName(inputedValue);
+  }
+
   return (
     <View style={styles.container}>
     
-      <Text> My name is <Text style={styles.textBold}>{name}</Text> </Text>
-      <Text> My friend name is <Text style={styles.textBold}>{person.name}</Text>. He is {person.age} years old.</Text>
-      <Text>This is our third line.{user[0]}, He is {user[1]} years old. and He is from <Text style={styles.textBold}>{user[2]}</Text>  </Text>
+    <View>
+      <TextInput 
+      style={styles.textInputField} 
+      placeholder='Type your name'
+          onChangeText={(value) => onchangeTrigger(value)}
+      />
+    </View>
 
-
-      <View style={styles.buttonContainer}>
-        <Button title="Update State" onPress={changeName} />
-      </View>
+    <Text style={styles.marginButtom}> My name is <Text style={styles.textBold}>{name}</Text> </Text>
       
     </View>
   );
@@ -35,10 +40,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonContainer:{
+  marginButtom : {
     marginTop:20
   },
   textBold: {
     fontWeight: "bold"
+  },
+  textInputField: {
+    borderWidth: 1,
+    padding: 10
   }
 });

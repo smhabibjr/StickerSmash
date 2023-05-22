@@ -1,15 +1,25 @@
 # StickerSmash
-### Initialize a new Expo app
+### Input text field and onChangeText event
 ````
-npx create-expo-app StickerSmash && cd StickerSmash
+  const onchangeTrigger = (inputedValue)=> {
+    setName(inputedValue);
+  }
 
-cd StickerSmash
-````
-### Install dependencies
-````
-npx expo install react-dom react-native-web @expo/webpack-config
-````
-### Run the app on mobile and web
-````
-npx expo start
+  return (
+    <View style={styles.container}>
+    
+    <View>
+      <TextInput 
+      style={styles.textInputField} 
+      placeholder='Type your name'
+          onChangeText={(value) => onchangeTrigger(value)}
+      />
+    </View>
+
+    <Text style={styles.marginButtom}> My name is <Text style={styles.textBold}>{name}</Text> </Text>
+      
+    </View>
+  );
+}
+
 ````

@@ -1,5 +1,5 @@
 # StickerSmash
-### Input text field and onChangeText event
+### Listing item inside a scrollView using map
 ````
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';

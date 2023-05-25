@@ -1,33 +1,41 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView} from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
 
-  const [people, setPeople] = useState([
+  const [person, setPerson] = useState([
     {name: "Habib", key: 1},
-    { name: "Abir", key: 2 },
-    { name: "Hamza", key: 3 },
-    { name: "Ali", key: 4 },
-    { name: "Sakib", key: 5 },
-    { name: "Mas", key: 6 },
-    { name: "Mas", key: 7 },
-    { name: "Mas", key: 8 },
-    { name: "Mas", key: 9 },
-    { name: "Mas", key: 10 },
-    { name: "Mas", key: 11 },
+    { name: "Habib", key: 2 },
+    { name: "Habib", key: 3 },
+    { name: "Habib", key: 4 },
+    { name: "Habib", key: 5 },
+    { name: "Habib", key: 6 },
+    { name: "Habib", key: 7 },
+    { name: "Habib", key: 8 },
+    { name: "Habib", key: 9 },
+    { name: "Habib", key: 10 },
+    { name: "Habib", key: 11 },
   ])
+
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {people.map((item) => {
-          return (
-            <View key={item.key}>
-              <Text style={styles.item}> {item.name} </Text>
-            </View>
-          )
-        })}
-      </ScrollView>
+      <View style={styles.navbar}>
+        <Text style={styles.boldText}> All item </Text>
+      </View>
+
+      <View>
+        <ScrollView>
+          {person.map((singleItem) => {
+            return (
+              <View key={singleItem.key}>
+                <Text style={styles.item}>{singleItem.name} </Text>
+              </View>
+            )
+          })}
+
+        </ScrollView>
+      </View>
     </View>
   );
 }
@@ -43,8 +51,18 @@ const styles = StyleSheet.create({
   },
   item: {
     marginTop: 40,
-    padding:20,
+    padding: 20,
     backgroundColor: "pink",
-    fontSize: 24
+  },
+  navbar: {
+  backgroundColor: "pink",
+  height: 40,
+  alignItems: "center",
+  justifyContent: "center"
+  },
+  boldText : {
+    fontSize: 20,
+    fontWeight: "bold"
   }
+ 
 });

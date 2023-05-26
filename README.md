@@ -2,44 +2,35 @@
 ### Listing item inside a scrollView using map
 ````
 import { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import {  StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default function App() {
 
   const [person, setPerson] = useState([
-    {name: "Habib", key: 1},
-    { name: "Habib", key: 2 },
-    { name: "Habib", key: 3 },
-    { name: "Habib", key: 4 },
-    { name: "Habib", key: 5 },
-    { name: "Habib", key: 6 },
-    { name: "Habib", key: 7 },
-    { name: "Habib", key: 8 },
-    { name: "Habib", key: 9 },
-    { name: "Habib", key: 10 },
-    { name: "Habib", key: 11 },
+    {name: "Habib",  id : 1},
+    { name: "Habib", id :  2 },
+    { name: "Habib", id :  3 },
+    { name: "Habib", id :  4 },
+    { name: "Habib", id :  5 },
+    { name: "Habib", id :  6 },
+    { name: "Habib", id :  7 },
+    { name: "Habib", id :  8 },
+    { name: "Habib", id :  9 }
   ])
-
 
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
-        <Text style={styles.boldText}> All item </Text>
+        <Text style={styles.boldText}> All items </Text>
       </View>
 
-      <View>
-        <ScrollView>
-
-          {person.map((singleItem) => {
-            return (
-              <View key={singleItem.key}>
-                <Text style={styles.item}>{singleItem.name} </Text>
-              </View>
-            )
-          })}
-
-        </ScrollView>
-      </View>
+      <FlatList
+        data={person}
+        renderItem={({item}) => (
+          <Text style={styles.item}>{item.name} </Text>
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }

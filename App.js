@@ -4,15 +4,15 @@ import {  StyleSheet, Text, View, FlatList } from 'react-native';
 export default function App() {
 
   const [person, setPerson] = useState([
-    {name: "Habib",  id : 1},
-    { name: "Habib", id :  2 },
-    { name: "Habib", id :  3 },
-    { name: "Habib", id :  4 },
-    { name: "Habib", id :  5 },
-    { name: "Habib", id :  6 },
-    { name: "Habib", id :  7 },
-    { name: "Habib", id :  8 },
-    { name: "Habib", id :  9 }
+    { name: "item",  id : 1},
+    { name: "item", id :  2 },
+    { name: "item", id :  3 },
+    { name: "item", id :  4 },
+    { name: "item", id :  5 },
+    { name: "item", id :  6 },
+    { name: "item", id :  7 },
+    { name: "item", id :  8 },
+    { name: "item", id :  9 }
   ])
 
   return (
@@ -23,10 +23,10 @@ export default function App() {
 
       <FlatList
         data={person}
-        renderItem={({item}) => (
-          <Text style={styles.item}>{item.name} </Text>
+        renderItem={({item, index}) => (
+          <Text style={styles.item}>{item.name} {index} </Text>
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
       />
     </View>
   );

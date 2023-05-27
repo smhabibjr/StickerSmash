@@ -2,11 +2,17 @@
 ### Touchable components
 ````
 import { useState } from 'react';
-import {  StyleSheet, Text, View, FlatList } from 'react-native';
+import {  StyleSheet, Text, View, FlatList, TouchableOpacity, Button } from 'react-native';
 
 export default function App() {
 
- const [person, setPerson] = useState([
+  const [personName  , setName ]  = useState("");
+
+  const changeNameF = (itemIndex) => {
+    setName(`Item ${itemIndex} has been clicked`);
+  }
+
+  const [person, setPerson] = useState([
     { name: "item",  id : 1},
     { name: "item", id :  2 },
     { name: "item", id :  3 },
@@ -24,10 +30,16 @@ export default function App() {
         <Text style={styles.boldText}> All items </Text>
       </View>
 
+      <View style={styles.navbar}>
+        <Text style={styles.disply}> {personName} </Text>
+      </View>
+
       <FlatList
         data={person}
-        renderItem={({item}) => (
-          <Text style={styles.item}>{item.name} </Text>
+        renderItem={({item, index}) => (
+          <TouchableOpacity onPress={() => changeNameF(index)}>
+            <Text style={styles.item}>{item.name} {index} </Text>
+          </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
       />
@@ -58,9 +70,13 @@ const styles = StyleSheet.create({
   boldText : {
     fontSize: 20,
     fontWeight: "bold"
+  },
+  disply: {
+    color: "red"
   }
  
 });
+
 
 
 ````

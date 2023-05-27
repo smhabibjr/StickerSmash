@@ -1,7 +1,13 @@
 import { useState } from 'react';
-import {  StyleSheet, Text, View, FlatList } from 'react-native';
+import {  StyleSheet, Text, View, FlatList, TouchableOpacity, Button } from 'react-native';
 
 export default function App() {
+
+  const [personName  , setName ]  = useState("");
+
+  const changeNameF = (itemIndex) => {
+    setName(`Item ${itemIndex} has been clicked`);
+  }
 
   const [person, setPerson] = useState([
     { name: "item",  id : 1},
@@ -21,10 +27,16 @@ export default function App() {
         <Text style={styles.boldText}> All items </Text>
       </View>
 
+      <View style={styles.navbar}>
+        <Text style={styles.disply}> {personName} </Text>
+      </View>
+
       <FlatList
         data={person}
         renderItem={({item, index}) => (
-          <Text style={styles.item}>{item.name} {index} </Text>
+          <TouchableOpacity onPress={() => changeNameF(index)}>
+            <Text style={styles.item}>{item.name} {index} </Text>
+          </TouchableOpacity>
         )}
         keyExtractor={item => item.id}
       />
@@ -55,6 +67,9 @@ const styles = StyleSheet.create({
   boldText : {
     fontSize: 20,
     fontWeight: "bold"
+  },
+  disply: {
+    color: "red"
   }
  
 });

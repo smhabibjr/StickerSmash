@@ -1,5 +1,5 @@
 # StickerSmash
-### Listing item inside a scrollView using Flat list componnent
+### Touchable components
 ````
 import { useState } from 'react';
 import {  StyleSheet, Text, View, FlatList } from 'react-native';

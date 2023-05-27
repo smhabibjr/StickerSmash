@@ -6,42 +6,46 @@ import {  StyleSheet, Text, View, FlatList, TouchableOpacity, Button } from 'rea
 
 export default function App() {
 
-  const [personName  , setName ]  = useState("");
-
-  const changeNameF = (itemIndex) => {
-    setName(`Item ${itemIndex} has been clicked`);
-  }
-
+  const [notifiy  , changeNotify ]  = useState("");
   const [person, setPerson] = useState([
-    { name: "item",  id : 1},
-    { name: "item", id :  2 },
-    { name: "item", id :  3 },
-    { name: "item", id :  4 },
-    { name: "item", id :  5 },
-    { name: "item", id :  6 },
-    { name: "item", id :  7 },
-    { name: "item", id :  8 },
-    { name: "item", id :  9 }
+    { name: "Person", id :  0 },
+    { name: "Person", id :  1 },
+    { name: "Person", id :  2 },
+    { name: "Person", id :  3 },
+    { name: "Person", id :  4 },
+    { name: "Person", id :  5 },
+    { name: "Person", id :  6 },
+    { name: "Person", id :  7 },
+    { name: "person", id :  8 }
   ])
+
+  const changeNameF = (personID) => {
+    setPerson((previousPersons) => {
+      return previousPersons.filter(previousPerson => previousPerson.id != personID ) 
+    })
+
+    changeNotify(`Person ID ${personID} has been removed`);
+
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
-        <Text style={styles.boldText}> All items </Text>
+        <Text style={styles.boldText}> All Person </Text>
       </View>
 
       <View style={styles.navbar}>
-        <Text style={styles.disply}> {personName} </Text>
+        <Text style={styles.disply}> {notifiy} </Text>
       </View>
 
       <FlatList
         data={person}
         renderItem={({item, index}) => (
-          <TouchableOpacity onPress={() => changeNameF(index)}>
-            <Text style={styles.item}>{item.name} {index} </Text>
+          <TouchableOpacity onPress={() => changeNameF(item.id)}>
+            <Text style={styles.item}>{item.name}. ID {item.id} </Text>
           </TouchableOpacity>
         )}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
